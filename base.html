@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Öğrenci Sistemi{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+    <a href="{{ url_for('home') }}">Ana Sayfa</a> |
+    {% if 'user' in session %}
+        <a href="{{ url_for('dashboard') }}">Dashboard</a> |
+        <a href="{{ url_for('add_student') }}">Öğrenci Ekle</a> |
+        <a href="{{ url_for('student_list') }}">Öğrenci Listesi</a> |
+        <a href="{{ url_for('student_stats') }}">İstatistikler</a> |
+        <a href="{{ url_for('add_notes') }}">Not Ekle</a> |
+        <a href="{{ url_for('add_courses') }}">Ders Ekle</a> |
+        <a href="{{ url_for('logout') }}">Çıkış</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">Giriş</a> |
+        <a href="{{ url_for('register') }}">Kayıt</a>
+    {% endif %}
+</nav>
+<hr>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% block content %}{% endblock %}
+</body>
+</html>

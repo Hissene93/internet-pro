@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Öğrenci Ekle{% endblock %}
+
+{% block content %}
+<h2>Öğrenci Ekle</h2>
+<form method="POST">
+    <input type="text" name="name" placeholder="Ad Soyad" required><br><br>
+    <input type="number" name="age" placeholder="Yaş" required><br><br>
+    <button type="submit">Ekle</button>
+</form>
+{% endblock %}

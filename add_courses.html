@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Ders Ekle{% endblock %}
+
+{% block content %}
+<h2>Yeni Ders Ekle</h2>
+<form method="POST">
+    <input type="text" name="course_name" placeholder="Ders Adı" required><br><br>
+    <button type="submit">Dersi Ekle</button>
+</form>
+{% endblock %}
